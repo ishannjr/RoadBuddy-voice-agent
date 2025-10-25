@@ -158,14 +158,7 @@ Access the live application at: **[https://frontend-agentic-ai-chi.vercel.app/](
 cd backend
 ```
 
-2. Install dependencies:
-```bash
-pip install -e .
-# Or with UV:
-uv sync --locked
-```
-
-3. Create `.env.local` file:
+2. Create `.env.local` file (The Details would be mailed):
 ```bash
 LIVEKIT_URL=wss://your-project.livekit.cloud
 LIVEKIT_API_KEY=your_api_key
@@ -173,34 +166,15 @@ LIVEKIT_API_SECRET=your_api_secret
 OPENAI_API_KEY=your_openai_key
 ```
 
-4. Download ML models:
+3. Install dependencies:
 ```bash
-python src/agent.py download-files
+uv sync # This will virtual environment
+uv run python src/agent.py download-files # This will download model and rest of the things like VAD and LiveKit turn detector
+uv run python src/agent.py console  # Use this if you want to test the agent on terminal
+uv run python src/agent.py dev # Run this command and the server would be running locally
 ```
 
-5. Run agent:
-```bash
-python src/agent.py start
-```
 
-**Option 2: Docker Setup**
-
-1. Navigate to backend directory:
-```bash
-cd backend
-```
-
-2. Build Docker image:
-```bash
-docker build -t my-livekit-agent:latest .
-```
-
-3. Update `docker-compose.yml` with your credentials
-
-4. Run with Docker Compose:
-```bash
-docker-compose up -d
-```
 
 #### Frontend Setup
 
